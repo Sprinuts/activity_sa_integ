@@ -1,0 +1,23 @@
+
+# 2
+# Print student records
+file = open('students.txt', 'r')
+lines = file.readlines()
+
+# Print table header
+print()
+print("Student ID\tName\t\t\tQuiz Scores\t\tAverage Score")
+print("-----------------------------------------------------------------------------")
+
+for line in lines:
+    # Split the line into student ID, name, and quiz scores
+    student_id, name, *quiz_scores_str = line.strip().split(',')
+
+    # Calculate the average score
+    total_score = sum(int(score) for score in quiz_scores_str)
+    average_score = total_score / 4
+
+    # Print the student record in table format
+    print(f"{student_id}\t{name}\t\t{quiz_scores_str}\t\t{average_score}")
+print()
+file.close()
